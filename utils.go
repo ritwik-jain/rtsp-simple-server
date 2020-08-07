@@ -149,7 +149,7 @@ func splitPath(path string) (string, string, error) {
 	return comps[0], comps[1], nil
 }
 
-var rePathName = regexp.MustCompile("^[0-9a-zA-Z_-]+$")
+var rePathName = regexp.MustCompile("^[a-zA-Z\d]+(?:\/?)[a-zA-Z\d]+$")
 
 func checkPathName(name string) error {
 	if !rePathName.MatchString(name) {
