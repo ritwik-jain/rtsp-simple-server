@@ -311,6 +311,10 @@ func (c *client) handleRequest(req *gortsplib.Request) bool {
 	}
 	path = path[1:] // strip leading slash
 
+	if strings.Contains(path, "live/") {
+		path = strings.Trim(path, "live/")
+	}
+	
 	switch req.Method {
 	case gortsplib.OPTIONS:
 		c.conn.WriteResponse(&gortsplib.Response{
